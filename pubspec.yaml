@@ -1,0 +1,8 @@
+name: string_utility
+version: 0.1.0
+description: string utility using regular expression
+environment:
+  sdk: ">=2.10.0 <3.0.0"
+dev_dependencies:
+  test: ^1.16.8
+publish_to: https://pub.dev/
