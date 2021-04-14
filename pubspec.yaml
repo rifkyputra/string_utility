@@ -6,3 +6,4 @@ environment:
 dev_dependencies:
   test: ^1.16.8
 publish_to: https://pub.dev/
+repository: https://github.com/rifqempul/string_utility
