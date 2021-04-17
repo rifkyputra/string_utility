@@ -35,4 +35,55 @@ void main() {
       expect(testString, expected);
     });
   });
+
+  group('isUppercase', () {
+    test('string contain uppercase', () {
+      final word = 'uuu ... yyy, 09() Ui';
+
+      expect(word.containsUpperCase, true);
+    });
+  });
+
+  group('isLowercase', () {
+    test('string contain lowercase', () {
+      final word = 'ABCDQWc  32ERTIOp';
+
+      expect(word.containsLowerCase, true);
+    });
+  });
+
+  group('isAlphanumeric', () {
+    test('string is alphanumeric', () {
+      final word = '43fsdfApc--0';
+      expect(word.isAlphanumeric, true);
+    });
+  });
+
+  group('isEmail', () {
+    test('string is valid email', () {
+      final email = 'gan@gastron.com';
+
+      expect(email.isEmail, true);
+    });
+
+    test('string is not valid email', () {
+      final email = 'ngasal.com hehehe';
+
+      expect(email.isEmail, false);
+    });
+  });
+
+  group('isUrl', () {
+    test('string is valid url mandatory protocol', () {
+      final url = 'http://www.google.com';
+
+      expect(url.isUrl(), true);
+    });
+
+    test('string is valid url optional protocol', () {
+      final url = 'google.com';
+
+      expect(url.isUrl(protocolMandatory: false), true);
+    });
+  });
 }

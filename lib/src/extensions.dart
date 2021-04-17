@@ -2,7 +2,8 @@ extension ExtendedString on String {
   /// Remove extra whitespace between words then trim.
   String get removeExtraWhiteSpaces {
     final regex = RegExp(r'\S+');
-    final words = regex.allMatches(this).map((v) => v.group(0)).join(' ');
+    final words =
+        regex.allMatches(this).map((v) => v.group(0)).join(' ').trim();
     return words;
   }
 
@@ -16,12 +17,6 @@ extension ExtendedString on String {
         .replaceAll(',', '');
 
     return matchedString.isEmpty ? onNotFound : matchedString;
-  }
-
-  bool get isContainWhiteSpace {
-    if (this.length < 2) return false;
-    // return this.contains(RegExp(r'^(?=.*?[\s]).*$'));
-    return this.contains(RegExp(r'\s'));
   }
 
   String get censored {
@@ -48,12 +43,34 @@ extension ExtendedString on String {
         RegExp(r'^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[!@#$]).*$'));
   }
 
+  bool get isEmail {
+    return this.contains(
+        RegExp(r'^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$'));
+  }
+
+  bool isUrl({bool protocolMandatory = true}) {
+    final RegExp regexOptionalProtocol = RegExp(
+        r'(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)');
+
+    final RegExp regexMandatoryProtocol = RegExp(
+        r'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#()?&//=]*)');
+
+    return this.contains(
+      protocolMandatory ? regexMandatoryProtocol : regexOptionalProtocol,
+    );
+  }
+
+  bool get containsWhiteSpace {
+    if (this.length < 2) return false;
+    return this.contains(RegExp(r'\s'));
+  }
+
   bool get containsUpperCase {
-    return this.contains(RegExp(r'(?=.*?[A-Z]).*'));
+    return this.contains(RegExp(r'(?=.*?[A-Z]).*$'));
   }
 
   bool get containsLowerCase {
-    return this.contains(RegExp(r'(?=.*?[a-z]'));
+    return this.contains(RegExp(r'(?=.*?[a-z]).*$'));
   }
 
   // bool
