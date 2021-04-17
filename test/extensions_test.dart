@@ -36,7 +36,21 @@ void main() {
     });
   });
 
-  group('isUppercase', () {
+  group('censored', () {
+    test('censor single word', () {
+      final word = 'MySensitiveWord';
+
+      expect(word.censored, 'My************d');
+    });
+
+    test('censor multiple words', () {
+      final words = 'Some Longer Sentence';
+
+      expect(words.censored, 'So*e Lo***r Se*****e');
+    });
+  });
+
+  group('containUppercase', () {
     test('string contain uppercase', () {
       final word = 'uuu ... yyy, 09() Ui';
 
@@ -44,7 +58,7 @@ void main() {
     });
   });
 
-  group('isLowercase', () {
+  group('containLowercase', () {
     test('string contain lowercase', () {
       final word = 'ABCDQWc  32ERTIOp';
 
@@ -56,6 +70,18 @@ void main() {
     test('string is alphanumeric', () {
       final word = '43fsdfApc--0';
       expect(word.isAlphanumeric, true);
+    });
+  });
+  group('isAlphanumericUpperCase', () {
+    test('string is alphanumeric', () {
+      final word = '43fsdfApc';
+      expect(word.isAlphanumericUppercase, true);
+    });
+  });
+  group('isAlphanumericUpperCaseWithSymbol', () {
+    test('string is alphanumeric uppercase with symbol', () {
+      final word = '43fsdfApc!@0ABC';
+      expect(word.isAlphanumericUppercaseWithSymbol, true);
     });
   });
 

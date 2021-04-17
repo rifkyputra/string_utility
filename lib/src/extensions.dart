@@ -72,6 +72,4 @@ extension ExtendedString on String {
   bool get containsLowerCase {
     return this.contains(RegExp(r'(?=.*?[a-z]).*$'));
   }
-
-  // bool
 }
