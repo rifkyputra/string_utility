@@ -87,15 +87,26 @@ void main() {
 
   group('isEmail', () {
     test('string is valid email', () {
-      final email = 'gan@gastron.com';
+      final List emails = [
+        'gan@gastron.com',
+        'nadiem@krom.us',
+        'nexttry@try.de',
+        'firstky123@me.me',
+      ];
 
-      expect(email.isEmail, true);
+      expect(emails.any((element) => element.toString().isEmail), true);
     });
 
     test('string is not valid email', () {
-      final email = 'ngasal.com hehehe';
+      final List notValidEmails = [
+        'ngasal.com hehehe',
+        'fills @ #.hh',
+        'krait()()#@j.jj',
+        '())***@jos.josh',
+      ];
 
-      expect(email.isEmail, false);
+      expect(
+          notValidEmails.any((element) => element.toString().isEmail), false);
     });
   });
 
