@@ -5,3 +5,7 @@
 ## 0.1.1
 
 * add more functionality and added trim when removing extra whitespaces 
+
+## 0.1.2
+
+* use EmailValidator package
