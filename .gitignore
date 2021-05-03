@@ -1,1 +1,4 @@
 .vscode/launch.json
+.dart_tool/*
+.packages
+.dart_tool/package_config.json
