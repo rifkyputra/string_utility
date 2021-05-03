@@ -1,3 +1,5 @@
+import 'package:email_validator/email_validator.dart';
+
 extension ExtendedString on String {
   /// Remove extra whitespace between words then trim.
   String get removeExtraWhiteSpaces {
@@ -44,8 +46,7 @@ extension ExtendedString on String {
   }
 
   bool get isEmail {
-    return this.contains(
-        RegExp(r'^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$'));
+    return EmailValidator.validate(this);
   }
 
   bool isUrl({bool protocolMandatory = true}) {
@@ -61,7 +62,7 @@ extension ExtendedString on String {
   }
 
   bool get containsWhiteSpace {
-    if (this.length < 2) return false;
+    if (this.length == 0) return false;
     return this.contains(RegExp(r'\s'));
   }
 

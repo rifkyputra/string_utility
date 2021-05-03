@@ -3,6 +3,8 @@ version: 0.1.1
 description: string utility with common regex use cases. removing whitespace, is valid url, valid email, aphanumeric character, contain uppercase, contain lowercase, etc.
 environment:
   sdk: ">=2.10.0 <3.0.0"
+dependencies:
+  email_validator: '^1.0.6'
 dev_dependencies:
   test: ^1.16.8
 publish_to: https://pub.dev/
